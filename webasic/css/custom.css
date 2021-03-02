@@ -1,0 +1,8 @@
+.pointer {
+    cursor: pointer;
+}
+textarea {
+    font-family: monospace;
+    resize:vertical;
+    overflow-y: scroll;
+}
