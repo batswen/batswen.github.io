@@ -10,7 +10,11 @@
                 font-family: sans-serif;
                 font-size: 12pt;
             }
+            div {
+                text-align: center;
+            }
             table {
+                margin: 0 auto;
                 margin-top: 1em;
                 border-collapse: collapse;
             }
@@ -35,55 +39,54 @@
         </style>
     </head>
     <body>
-        <center>
+        <div>
             <h3>IP v4 calculator</h3>
             <h4>2020 Swen R&uuml;hl</h4>
-            <datalist id="ipadrs">
-                <option value="10.0.0.1">
-                <option value="172.16.0.1">
-                <option value="192.168.0.1">
-                <option value="200.200.200.200">
-            </datalist>
+        </div>        
+        <datalist id="ipadrs">
+            <option value="10.0.0.1">
+            <option value="172.16.0.1">
+            <option value="192.168.0.1">
+            <option value="200.200.200.200">
+        </datalist>
+        <div>
             <label for="ip">IP</label>
             <input id="ip" class="inp" list="ipadrs" type="text" value="192.168.0.1" onchange="calc()">
             <label for="suffix">Suffix</label>
             <input id="suffix" class="inp" type="number" value="24" min="0" max="30" onchange="calc()">
-            <!--<label for="netmsk">Netmask</label>
-            <input id="netmsk" class="inp" type="text" value="" onchange="calc()">-->
-            <br>
-            <table>
-                <tr>
-                    <th></th><th>Address</th><th>Binary</th>
-                </tr>
-                <tr>
-                    <td>IP</td><td id="dottedip"></td><td id="ipbin"></td>
-                </tr>
-                <tr>
-                    <td>Class</td><td id="classchar"></td><td id="classbits"></td>
-                </tr>
-                <tr>
-                    <td>Subnet mask</td><td id="subnetmask"></td><td id="subnetmaskbin"></td>
-                </tr>
-                <tr>
-                    <td>Network</td><td id="network"></td><td id="networkbin"></td>
-                </tr>
-                <tr>
-                    <td>Host range from</td><td id="hostsfrom"></td><td id="hostsfrombin"></td>
-                </tr>
-                <tr>
-                    <td>Host range to</td><td id="hoststo"></td><td id="hoststobin"></td>
-                </tr>
-                <tr>
-                    <td>Broadcast</td><td id="broadcast"></td><td id="broadcastbin"></td>
-                </tr>
-                <tr>
-                    <td>Hosts</td><td id="hosts"><td></td>
-                </tr>
-                <tr style="visibility:hidden;">
-                    <td></td><td>255.255.255.255</td><td>11111111.11111111.11111111.11111111</td>
-                </tr>
-            </table>
-        </center>
+        </div>
+        <table>
+            <tr>
+                <th></th><th>Address</th><th>Binary</th>
+            </tr>
+            <tr>
+                <td>IP</td><td id="dottedip"></td><td id="ipbin"></td>
+            </tr>
+            <tr>
+                <td>Class</td><td id="classchar"></td><td id="classbits"></td>
+            </tr>
+            <tr>
+                <td>Subnet mask</td><td id="subnetmask"></td><td id="subnetmaskbin"></td>
+            </tr>
+            <tr>
+                <td>Network</td><td id="network"></td><td id="networkbin"></td>
+            </tr>
+            <tr>
+                <td>Host range from</td><td id="hostsfrom"></td><td id="hostsfrombin"></td>
+            </tr>
+            <tr>
+                <td>Host range to</td><td id="hoststo"></td><td id="hoststobin"></td>
+            </tr>
+            <tr>
+                <td>Broadcast</td><td id="broadcast"></td><td id="broadcastbin"></td>
+            </tr>
+            <tr>
+                <td>Hosts</td><td id="hosts"><td></td>
+            </tr>
+            <tr style="visibility:hidden;">
+                <td></td><td>255.255.255.255</td><td>11111111.11111111.11111111.11111111</td>
+            </tr>
+        </table>
         <script>
             calc()
             function calc() {
