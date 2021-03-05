@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>HexDezBin</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                font-size: 12pt;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            tr:nth-child(2n) {
+                background-color: #aae;
+            }
+            tr:nth-child(2n+1) {
+                background-color: #ddf;
+            }
+            td {
+                padding: 0.2em;
+                text-align: center;
+            }
+            .rahmen {
+                background-color: #22e;
+                color: #fff;
+                text-align: center;
+            }
+            .txt:hover {
+                background-color: black;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h3>Point to any number inside the table</h3>
+            <h4>2020 Swen R&uuml;hl</h4>
+            <div id="seite"></div>
+        </center>
+        <script>
+            let html = "<table><tr><td></td>"
+            for (let x = 0; x < 16; x++) {
+                html += "<td class='rahmen'>xxxx" + toBin(x) + "<br>x" + toHex(x) + "</td>"
+            }
+            html += "</tr>"
+            for (let y = 0; y < 16; y++) {
+                html += "<tr>"
+                for (let x = 0; x < 16; x++) {
+                    if (x === 0) {
+                        html += "<td class='rahmen'>" + toBin(y) + "xxxx<br>" + toHex(y) + "x</td>"
+                    }
+                    html += "<td class='txt' title='"
+                    let num = x + 16 * y
+                    html += "Dec: " + num
+                    html += "\nHex: 0x" + toHex(num)
+                    html += "\nBin: 0b" + toBin8(num)
+                    html += "'>"
+                    html += num
+                    html += "</td>"
+                }
+                html += "</tr>"
+            }
+            html += "</table>"
+            document.getElementById("seite").innerHTML = html
+
+            function toBin(num) {
+                return ("0000"+num.toString(2)).substr(-4)
+            }
+            function toBin8(num) {
+                return ("00000000"+num.toString(2)).substr(-8)
+            }
+            function toHex(num) {
+                return num.toString(16).toUpperCase()
+            }
+            function toHex8(num) {
+                return ("00"+num.toString(16)).substr(-2).toUpperCase()
+            }
+        </script>
+    </body>
+</html>

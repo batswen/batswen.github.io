@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>IPv4 calculator</title>
+        <style>
+            body, input {
+                font-family: sans-serif;
+                font-size: 12pt;
+            }
+            table {
+                margin-top: 1em;
+                border-collapse: collapse;
+            }
+            tr:nth-child(2n+1) {
+                background-color: #dde;
+            }
+            tr:nth-child(2n) {
+                background-color: #eef;
+            }
+            th {
+                padding: 0.5em;
+            }
+            td {
+                font-family: monospace;
+                padding: 0.5em;
+            }
+            .inp {
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                padding: 0.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h3>IP v4 calculator</h3>
+            <h4>2020 Swen R&uuml;hl</h4>
+            <datalist id="ipadrs">
+                <option value="10.0.0.1">
+                <option value="172.16.0.1">
+                <option value="192.168.0.1">
+                <option value="200.200.200.200">
+            </datalist>
+            <label for="ip">IP</label>
+            <input id="ip" class="inp" list="ipadrs" type="text" value="192.168.0.1" onchange="calc()">
+            <label for="suffix">Suffix</label>
+            <input id="suffix" class="inp" type="number" value="24" min="0" max="30" onchange="calc()">
+            <!--<label for="netmsk">Netmask</label>
+            <input id="netmsk" class="inp" type="text" value="" onchange="calc()">-->
+            <br>
+            <table>
+                <tr>
+                    <th></th><th>Address</th><th>Binary</th>
+                </tr>
+                <tr>
+                    <td>IP</td><td id="dottedip"></td><td id="ipbin"></td>
+                </tr>
+                <tr>
+                    <td>Class</td><td id="classchar"></td><td id="classbits"></td>
+                </tr>
+                <tr>
+                    <td>Subnet mask</td><td id="subnetmask"></td><td id="subnetmaskbin"></td>
+                </tr>
+                <tr>
+                    <td>Network</td><td id="network"></td><td id="networkbin"></td>
+                </tr>
+                <tr>
+                    <td>Host range from</td><td id="hostsfrom"></td><td id="hostsfrombin"></td>
+                </tr>
+                <tr>
+                    <td>Host range to</td><td id="hoststo"></td><td id="hoststobin"></td>
+                </tr>
+                <tr>
+                    <td>Broadcast</td><td id="broadcast"></td><td id="broadcastbin"></td>
+                </tr>
+                <tr>
+                    <td>Hosts</td><td id="hosts"><td></td><td></td>
+                </tr>
+                <tr style="visibility:hidden;">
+                    <td></td><td>255.255.255.255</td><td>11111111.11111111.11111111.11111111</td>
+                </tr>
+            </table>
+        </center>
+        <script>
+            calc()
+            function calc() {
+                const input_ip = document.getElementById("ip").value
+                const input_suffix = document.getElementById("suffix").value
+                /*const input_netmask = document.getElementById("netmsk").value*/
+                const ipAdrRegEx = new RegExp("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$")
+
+                if (input_ip === null || ipAdrRegEx.test(input_ip) === false || input_suffix === null && input_netmask === null) {
+                    return
+                }
+
+                const ip = dottedToNum(input_ip)
+
+                document.getElementById("dottedip").innerHTML = numToDotted(ip)
+                document.getElementById("ipbin").innerHTML = numToBinDotted(ip)
+                let classchar, classbits
+                if (ip < 128 * 16777216) {
+                    classchar = "A"; classbits = "0......."
+                } else if (ip < 192 * 16777216) {
+                    classchar = "B"; classbits = "10......"
+                } else if (ip < 224 * 16777216) {
+                    classchar = "C"; classbits = "110....."
+                } else if (ip < 240 * 16777216) {
+                    classchar = "D"; classbits = "1110...."
+                } else {
+                    classchar = "E"; classbits = "1111...."
+                }
+                document.getElementById("classchar").innerHTML = classchar
+                document.getElementById("classbits").innerHTML = classbits
+
+
+                const subnetmask = dottedToNum(suffixToSubnet(input_suffix))
+                /*if (input_netmask !== null) {
+                    subnetmask = subnetToSuffix(input_netmask)
+                }*/
+                document.getElementById("subnetmask").innerHTML = numToDotted(subnetmask)
+                document.getElementById("subnetmaskbin").innerHTML = numToBinDotted(subnetmask)
+                const network = ip & subnetmask
+                document.getElementById("network").innerHTML = numToDotted(network)
+                document.getElementById("networkbin").innerHTML = numToBinDotted(network, input_suffix)
+                const broadcast = ip | ~subnetmask
+                document.getElementById("broadcast").innerHTML = numToDotted(broadcast)
+                document.getElementById("broadcastbin").innerHTML = numToBinDotted(broadcast, input_suffix)
+                const hostsfrom = network + 1
+                document.getElementById("hostsfrom").innerHTML = numToDotted(hostsfrom)
+                document.getElementById("hostsfrombin").innerHTML = numToBinDotted(hostsfrom, input_suffix)
+                const hoststo = broadcast - 1
+                document.getElementById("hoststo").innerHTML = numToDotted(hoststo)
+                document.getElementById("hoststobin").innerHTML = numToBinDotted(hoststo, input_suffix)
+                let hosts = Math.pow(2, 32 - input_suffix) - 2
+                hosts = hosts < 0 ? 0 : hosts
+                hosts = hosts > 16777214 ? 16777214 : hosts
+                document.getElementById("hosts").innerHTML = hosts
+            }
+            function numToDotted(num) {
+                return ((num >> 24) & 255) + "." + ((num >> 16) & 255) + "." + ((num >> 8) & 255) + "." + (num & 255)
+            }
+            function numToBinDotted(num, colbits) {
+                let result, bits, dots
+                if (colbits !== undefined) {
+                    bits = toBin8((num >> 24) & 255) + toBin8((num >> 16) & 255) + toBin8((num >> 8) & 255) + toBin8(num & 255)
+                    result = bits.slice(0, colbits) + "<span style='color:red;'>" + bits.substring(colbits, 32) + "</span>"
+                    bits = 0; dots = 0
+                    for (i = 0; i < result.length; i++) {
+                        if (result.charAt(i) === "0" || result.charAt(i) === "1") {
+                            bits++
+                        }
+                        if (bits === 8 && dots < 3) {
+                            bits = 0; dots++
+                            result = result.substring(0, i + 1) + "<span style='color:black;'>.</span>" + result.substring(i + 1, result.length)
+                        }
+                    }
+                } else {
+                    result = toBin8((num >> 24) & 255) + "." + toBin8((num >> 16) & 255) + "." + toBin8((num >> 8) & 255) + "." + toBin8(num & 255)
+                }
+                return result
+            }
+            function dottedToNum(dotted) {
+                let result = 0
+                for (let i = 0; i < 4; i++) {
+                    if (dotted.indexOf(".") !== -1) {
+                        result = result * 256 + Number(dotted.substring(0, dotted.indexOf(".")))
+                        dotted = dotted.substring(dotted.indexOf(".") + 1)
+                    } else {
+                        result = result * 256 + Number(dotted)
+                    }
+                }
+                return result
+            }
+            function suffixToSubnet(suffix) {
+                let result = ""
+                for (let i = 0; i < 4; i++) {
+                    if (suffix >= 8) {
+                        result += "255."
+                        suffix -= 8
+                    } else if (suffix === 0) {
+                        result += "0."
+                    } else {
+                        let num = 0
+                        for (let i = 0; i < 8; i++) {
+                            if (suffix > 0) {
+                                num = num * 2 + 1
+                                suffix--
+                            } else {
+                                num = num * 2
+                            }
+                        }
+                        result += num + "."
+                    }
+                }
+                return result.substring(0, result.length - 1)
+            }
+            function subnetToSuffix(sn) {
+                let result = 0
+                sn = sn.split(".")
+                for (let s of sn) {
+                    result *= 256
+                    result += Number(s)
+                }
+                return result.toString(2).replace(/0/g, "").length
+            }
+            function toBin(num) {
+                num = Number(num)
+                return ("0000"+num.toString(2)).substr(-4)
+            }
+            function toBin8(num) {
+                num = Number(num)
+                return ("00000000"+num.toString(2)).substr(-8)
+            }
+            function toHex(num) {
+                return num.toString(16).toUpperCase()
+            }
+            function toHex8(num) {
+                return ("00"+num.toString(16)).substr(-2).toUpperCase()
+            }
+        </script>
+    </body>
+</html>
