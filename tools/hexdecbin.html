@@ -35,11 +35,11 @@
         </style>
     </head>
     <body>
-        <center>
+        <div style="text-align: center;">
             <h3>Point to any number inside the table</h3>
             <h4>2020 Swen R&uuml;hl</h4>
             <div id="seite"></div>
-        </center>
+        </div>
         <script>
             let html = "<table><tr><td></td>"
             for (let x = 0; x < 16; x++) {
@@ -55,7 +55,7 @@
                     html += "<td class='txt' title='"
                     let num = x + 16 * y
                     html += "Dec: " + num
-                    html += "\nHex: 0x" + toHex(num)
+                    html += "\nHex: 0x" + toHex8(num)
                     html += "\nBin: 0b" + toBin8(num)
                     html += "'>"
                     html += num
