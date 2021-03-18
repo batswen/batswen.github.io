@@ -38,7 +38,7 @@ class Game {
                     bombs++
                 }
                 // links unten
-                if (i < this.WIDTH * this.HEIGHT - this.WIDTH - 1 && grid[i + this.WIDTH - 1] === "bomb") {
+                if (i < this.WIDTH * this.HEIGHT - this.WIDTH && grid[i + this.WIDTH - 1] === "bomb") {
                     bombs++
                 }
             }
