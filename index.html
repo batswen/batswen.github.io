@@ -8,49 +8,45 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            overflow:hidden;
+            box-sizing: border-box;
         }
 
         iframe {
             position:absolute;
             border: none;
             width: 100%;
-            height: 100vh;
+            height: 90vh;
             z-index: 0;
         }
         .navbar {
-            overflow: hidden;
+            height: 3em;
             background-color: #333;
             position: relative;
+            display: flex;
+            align-items: center;
         }
 
-        .navbar a {
-            float: left;
-            font-size: 16px;
+        .navbar a, .navbar .dropbtn {
+            height: 100%;
+            padding: 0 1em;
+            font-family: inherit;
+            font-size: inherit;
+            background-color: inherit;
             color: white;
             text-align: center;
-            padding: 14px 16px;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: hsl(240, 100%, 60%);
         }
 
         .dropdown {
-            float: left;
-            overflow: hidden;
-        }
-
-        .dropdown .dropbtn {
-            font-size: 16px;  
-            border: none;
-            outline: none;
-            color: white;
-            padding: 14px 16px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-        }
-
-        .navbar a:hover, .dropdown:hover .dropbtn {
-            background-color: rgb(0, 89, 255);
+            position: relative;
+            height: 100%;
         }
 
         .dropdown-content {
@@ -63,21 +59,19 @@
         }
 
         .dropdown-content a {
-            float: none;
             color: black;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
-            text-align: left;
         }
 
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
+        .dropdown-content a:hover {background-color: #f1f1f1}
 
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
+        
         .mail { position: absolute; top:-9999em}
     </style>
     <title>batswen</title>
@@ -85,19 +79,24 @@
 <body>
     <div class="navbar">
         <a href="https://github.com/batswen" target="_blank">GitHub</a>
-        <a href="webasic/index.html" target="page">WeBasic</a>
+        <!-- <a href="webasic/index.html" target="page">WeBasic</a> -->
         <a href="sweeper/index.html" target="page">Sweeper</a>
         <a class="mail" href="mailto:spam@xn--swen-rhl-c6a.de">Contact me</a>
         <div class="dropdown">
-          <button class="dropbtn">Tools</button>
-          <div class="dropdown-content">
-            <a href="tools/noten.html" target="page">Noten (de)</a>
-            <a href="tools/ipv4.html" target="page">IP v4 Calculator</a>
-            <a href="tools/hexdecbin.html" target="page">HexDecBin</a>
-          </div>
+            <button class="dropbtn">Tools</button>
+            <div class="dropdown-content">
+                <a href="tools/noten.html" target="page">Noten (de)</a>
+                <a href="tools/ipv4.html" target="page">IP v4 Calculator</a>
+                <a href="tools/hexdecbin.html" target="page">HexDecBin</a>
+            </div>
         </div>
-        <a href="#" style="float:right;">&copy; 2021 Swen Rühl</a>
+        <a href="#">&copy; 2021-<span id="currentYear"></span>&nbsp;Swen Rühl</a>
     </div>
     <iframe name="page"></iframe>
+    <script>
+        const date = new Date()
+        const el = document.getElementById("currentYear")
+        el.textContent = date.getFullYear()
+    </script>
 </body>
 </html>
