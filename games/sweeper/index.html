@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+
+<html lang="de">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Swen Rühl">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+    #page {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        background-color: #eee;
+        margin-top: 1em;
+    }
+    
+    #page div {
+        width: 42px;
+        height: 42px;
+        border: 2px solid;
+        border-top-color: #ddd;
+        border-left-color: #ddd;
+        border-right-color: #222;
+        border-bottom-color: #222;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #page div:hover {
+        background-color: #ccc;
+    }
+    
+    .revealed {
+        border-top-color: #222 !important;
+        border-left-color: #222 !important;
+        border-right-color: #ddd !important;
+        border-bottom-color: #ddd !important;
+        background-color: #cde;
+    }
+    .red {
+        background-color: red;
+    }
+    .modal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,0.2);
+        z-index: 1;
+        display: none;
+        text-align:center;
+    }
+    .modal > div {
+        width: 380px;
+        position: relative;
+        margin: 10% auto;
+        background: #fff;
+    }
+    .modal button {
+        border: none;
+        background-color: #58f;
+        padding: 0.25em 2.5em;
+        margin-bottom: 0.25em;
+    }
+    .modal button:hover {
+        background-color: #7af;
+    }
+    </style>
+	<title>mineSweeper</title>
+	<script>
+        window.onload = function() {
+            new Game(10, 10, 20)
+        }
+	</script>
+</head>
+
+<body>
+    <div id="modalDiv" class="modal">
+        <div>
+            <h2 id="modalHeader"></h2>
+            <p id="modalP"></p>
+            <button onclick='document.getElementById("modalDiv").style.display="none"'>Ok</button>
+        </div>
+    </div>
+    <div id="page"></div>
+    <script src="js/game.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@ class Game {
     constructor(WIDTH, HEIGHT, BOMBS) {
         this.WIDTH = WIDTH; this.HEIGHT = HEIGHT; this.BOMBS = BOMBS
         this.revealed = 0
-        const page = document.getElementById("sweeper-game")
+        const page = document.getElementById("page")
 
         this.cells = []
         let grid = []
