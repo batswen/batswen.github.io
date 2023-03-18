@@ -1,0 +1,28 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    text-align: center;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+    padding-top: 0;
+    border: 5px solid #eee;
+}
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+.mt-1 { margin-top: 1em; }
+.text-grey { color: #999; }
+#game {
+    margin-top: 1em;
+    border: 1px solid black;
+}
+#newgame {
+    margin-top: 0.5em;
+}

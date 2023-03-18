@@ -22,17 +22,20 @@
         .flex { display: flex }
         .navbar {
             height: 3em;
-            background-color: #333;
+            /* background-color: #4c32e0; */
+            background: radial-gradient(circle at 12.3% 19.3%, rgb(85, 88, 218) 0%, rgb(95, 209, 249) 100.2%);
             position: relative;
             display: flex;
             align-items: center;
         }
-
+        .text-white {
+            color: white;
+            text-shadow: 0 0 5px #333;
+        }
         .navbar a, .navbar .dropbtn {
             height: 100%;
             padding: 0 1em;
             background-color: inherit;
-            color: white;
             text-align: center;
             text-decoration: none;
             display: flex;
@@ -42,7 +45,8 @@
         }
         .navbar .pizza {padding: 0 1em;}
         .navbar a:hover, .dropdown:hover .dropbtn {
-            background-color: hsl(240, 100%, 60%);
+            /* background-color: hsl(240, 100%, 60%); */
+            text-shadow: 0 0 5px #333;
         }
 
         .dropdown {
@@ -63,7 +67,7 @@
             color: black;
             padding: 1em 2em;
             text-decoration: none;
-            /* display: block; */
+            display: flex;
         }
 
         .dropdown-content a:hover {background-color: #f1f1f1}
@@ -72,7 +76,6 @@
             display: block;
         }
 
-        
         .mail { position: absolute; top:-9999em}
     </style>
     <title>batswen</title>
@@ -80,33 +83,33 @@
 <body>
     <div class="navbar">
         <span class="pizza">🍕</span>
-        <!-- <a href="webasic/index.html" target="page">WeBasic</a> -->
         <a class="mail" href="mailto:spam@xn--swen-rhl-c6a.de">Contact me</a>
         <div class="dropdown">
-            <button class="dropbtn">Tools</button>
+            <button class="dropbtn text-white">Tools</button>
             <div class="dropdown-content">
                 <a href="tools/noten.html" target="page">Noten (de)</a>
                 <a href="tools/ipv4.html" target="page">IP v4 Calculator</a>
                 <a href="tools/hexdecbin.html" target="page">HexDecBin</a>
+                <!-- <a href="webasic/index.html" target="page">WeBasic</a> -->
             </div>
         </div>
         <div class="dropdown">
-            <button class="dropbtn">Games</button>
+            <button class="dropbtn text-white">Games</button>
             <div class="dropdown-content">
                 <a href="games/sweeper/index.html" target="page">Sweeper</a>
+                <a href="games/fallingblocks/index.html" target="page">Falling&nbsp;Blocks&nbsp;Game</a>
             </div>
         </div>
         <div class="dropdown">
-            <button class="dropbtn">Project Showcase</button>
+            <button class="dropbtn text-white">Project Showcase</button>
             <div class="dropdown-content">
-
                 <a class="flex" href="https://hrs.bildung.hessen.de/wp-content/mat-hospi_onlineportal/index.html" target="_blank">Hospitationsbogenerstellungsprogramm&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a>
                 <a href="https://hrs.bildung.hessen.de/wp-content/mat-UE-SE/index.html" target="_blank">Selbsteinschätzung (veraltet/outdated)&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a>
             </div>
         </div>
-        <a href="https://github.com/batswen" target="_blank" style="margin-left:auto">&copy; 2021-<span id="currentYear"></span>&nbsp;Swen Rühl</a>
+        <a href="https://github.com/batswen" class="text-white" target="_blank" style="margin-left:auto">&copy; 2021-<span id="currentYear"></span>&nbsp;Swen Rühl</a>
     </div>
-    <iframe name="page"></iframe>
+    <iframe name="page" src="tools/noten.html"></iframe>
     <script>
         const date = new Date()
         const el = document.getElementById("currentYear")
