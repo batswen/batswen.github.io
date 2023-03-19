@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style media="screen">
+        * {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+
+        .flex { display: flex }
+        a { text-decoration: none;}
+        .card-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            margin: 1em;
+            gap: 1em;
+        }
+        .card {
+            border: 1px solid #333;
+            border-radius: 3px;
+            padding: 0.5em;
+            color: black;
+            background-color: #f8f8f8;
+        }
+        .card:hover {
+            box-shadow: 0 0 7px #333;
+        }
+        .card .titel {
+            display: flex;
+        }
+        .card:hover .titel {
+            text-decoration: underline;
+        }
+        .card .tech {
+            /* height: 100%; */
+            display: flex;
+            gap: 0.5em;
+        }
+        .card .tech .client { 
+            background-color: white;
+            border: 1px solid #ddd;
+            position: relative;
+            width: 100%;
+            padding: 0.75em;
+        }
+        .card .tech .server {
+            background-color: white;
+            position: relative;
+            border: 1px solid #ddd;
+            width: 100%;
+            padding: 0.75em;
+        }
+        .card .tech .client::before {
+            position: absolute;
+            content: "Client";
+            font-size: 0.5em;
+            top: 0.25em;
+            left: 0.5em;
+        }
+        .card .tech .server::before {
+            position: absolute;
+            content: "Server";
+            font-size: 0.5em;
+            top: 0.25em;
+            left: 0.5em;
+        }
+        .card .img {
+            width: 100%;
+            border: 1px solid #888;
+        }
+        .my-1 {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+    </style>
+    <title>batswen</title>
+</head>
+<body>
+    <div class="card-wrapper">
+        <a href="https://hrs.bildung.hessen.de/wp-content/mat-UE-SE/index.html" target="_blank" class="card">
+            <div class="titel">
+                Selbsteinschätzung (veraltet/outdated)&nbsp;
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc.<path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
+            </div>
+            <img class="img my-1" src="/img/ba.png" alt="">
+            <div class="tech">
+                <div class="client">
+                    HTML, CSS, JavaScript, React, Axios
+                </div>
+                <div class="server">
+                    -
+                </div>
+            </div>
+        </a>
+        <a href="https://hrs.bildung.hessen.de/wp-content/mat-hospi_onlineportal/index.html" target="_blank" class="card">
+            <div class="titel">
+                Hospitationsbogenerstellungsprogramm&nbsp;
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc.<path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
+            </div>
+            <img class="img my-1" src="/img/hospitation.png" alt="">
+            <div class="tech">
+                <div class="client">
+                    HTML, CSS, JavaScript, Bootstrap
+                </div>
+                <div class="server">
+                    PHP, TCPDF
+                </div>
+            </div>
+        </a>
+        <a href="" class="card">
+            <div class="titel">
+                User management
+            </div>
+            <img class="img my-1" src="/img/user.png" alt="">
+            <div class="tech">
+                <div class="client">
+                    HTML, CSS, JavaScript, Svelte
+                </div>
+                <div class="server">
+                    Node, Express, MySQL/MariaDB, bcrypt, jsonwebtoken, nodemailer
+                </div>
+            </div>
+        </a>
+    </div>
+</body>
+</html>

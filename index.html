@@ -16,8 +16,8 @@
             position:absolute;
             border: none;
             width: 100%;
-            height: 90vh;
             z-index: 0;
+            height: calc(100% - 3em);
         }
         .flex { display: flex }
         .navbar {
@@ -105,16 +105,12 @@
                 <a href="games/fallingblocks/index.html" target="page">Falling&nbsp;Blocks&nbsp;Game</a>
             </div>
         </div>
-        <div class="dropdown">
-            <button class="dropbtn text-white">Project Showcase</button>
-            <div class="dropdown-content">
-                <a class="flex" href="https://hrs.bildung.hessen.de/wp-content/mat-hospi_onlineportal/index.html" target="_blank">Hospitationsbogenerstellungsprogramm&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a>
-                <a href="https://hrs.bildung.hessen.de/wp-content/mat-UE-SE/index.html" target="_blank">Selbsteinschätzung (veraltet/outdated)&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a>
-            </div>
-        </div>
+        <a href="tools/showcase.html" class="text-white" target="page">Project Showcase</a>
         <a href="https://github.com/batswen" class="text-white" target="_blank" style="margin-left:auto">&copy; 2021-<span id="currentYear"></span>&nbsp;Swen Rühl</a>
+        </div>
     </div>
-    <iframe name="page" src="tools/noten.html"></iframe>
+    <!-- <iframe name="page" src="tools/noten.html"></iframe> -->
+    <iframe name="page" src="tools/showcase.html"></iframe>
     <script>
         const date = new Date()
         const el = document.getElementById("currentYear")
