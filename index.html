@@ -30,6 +30,7 @@
         }
         .text-white {
             color: white;
+            text-decoration-color: white;
             text-shadow: 0 0 5px #333;
         }
         .navbar a, .navbar .dropbtn {
@@ -44,12 +45,13 @@
             cursor: pointer;
         }
         .navbar .pizza {padding: 0 1em;}
-        .navbar a:hover, .dropdown:hover .dropbtn {
+        /* .navbar a:hover, .dropdown:hover, .dropbtn { */
+        .navbar a:hover, .navbar .dropbtn:hover {
             text-decoration: underline;
             /* background-color: hsl(240, 100%, 80%); */
             /* border: 2px solid #333; */
-            /* text-shadow: 0 0 5px #333; */
             /* transform: scale(1.1); */
+            /* text-shadow: 0 0 5px #333; */
         }
 
         .dropdown {
