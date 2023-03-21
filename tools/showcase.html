@@ -21,6 +21,8 @@
             gap: 1em;
         }
         .card {
+            display: grid;
+            grid-template-rows: 1.25em auto 1fr;
             border: 1px solid #333;
             border-radius: 3px;
             padding: 0.5em;
@@ -36,38 +38,49 @@
         .card:hover .titel {
             text-decoration: underline;
         }
+        .card:hover {
+            background-color: #e8e8e8;
+        }
         .card .tech {
-            /* height: 100%; */
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 0.5em;
         }
-        .card .tech .client { 
+        .card .client {
             background-color: white;
             border: 1px solid #ddd;
             position: relative;
-            width: 100%;
             padding: 0.75em;
         }
-        .card .tech .server {
+        .card .server {
             background-color: white;
             position: relative;
             border: 1px solid #ddd;
-            width: 100%;
             padding: 0.75em;
         }
-        .card .tech .client::before {
+        .card .client::before {
             position: absolute;
             content: "Client";
             font-size: 0.5em;
             top: 0.25em;
             left: 0.5em;
         }
-        .card .tech .server::before {
+        .card .server::before {
             position: absolute;
             content: "Server";
             font-size: 0.5em;
             top: 0.25em;
             left: 0.5em;
+        }
+        .card .text {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 0.5em;
+        }
+        .card .description {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 0.75em;
         }
         .card .img {
             width: 100%;
@@ -88,12 +101,17 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc.<path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
             </div>
             <img class="img my-1" src="/img/ba.png" alt="">
-            <div class="tech">
-                <div class="client">
-                    HTML, CSS, JavaScript, React, Axios
+            <div class="text">
+                <div class="description">
+                    A complex voting system for schools in hesse. In development.
                 </div>
-                <div class="server">
-                    -
+                <div class="tech">
+                    <div class="client">
+                        HTML, CSS, JavaScript, React, Axios
+                    </div>
+                    <div class="server">
+                        -
+                    </div>
                 </div>
             </div>
         </a>
@@ -103,12 +121,17 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc.<path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
             </div>
             <img class="img my-1" src="/img/hospitation.png" alt="">
-            <div class="tech">
-                <div class="client">
-                    HTML, CSS, JavaScript, Bootstrap
+            <div class="text">
+                <div class="description">
+                    Creates PDF documents for schools in hesse.
                 </div>
-                <div class="server">
-                    PHP, TCPDF
+                <div class="tech">
+                    <div class="client">
+                        HTML, CSS, JavaScript, Bootstrap
+                    </div>
+                    <div class="server">
+                        PHP, TCPDF
+                    </div>
                 </div>
             </div>
         </a>
@@ -117,12 +140,17 @@
                 User management
             </div>
             <img class="img my-1" src="/img/user.png" alt="">
-            <div class="tech">
-                <div class="client">
-                    HTML, CSS, JavaScript, Svelte
+            <div class="text">
+                <div class="description">
+                    An example of back end technologies.
                 </div>
-                <div class="server">
-                    Node, Express, MySQL/MariaDB, bcrypt, jsonwebtoken, nodemailer
+                <div class="tech">
+                    <div class="client">
+                        HTML, CSS, JavaScript, Svelte
+                    </div>
+                    <div class="server">
+                        Node, Express, MySQL/MariaDB, bcrypt, jsonwebtoken, nodemailer
+                    </div>
                 </div>
             </div>
         </a>
